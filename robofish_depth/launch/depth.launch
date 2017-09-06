@@ -1,0 +1,8 @@
+<launch>
+  <!-- If ROBOT is not exported, default.yaml will be loaded twice, but
+       that isn't really a problem, just slightly inefficient -->
+  <rosparam file="$(find robofish_depth)/param/default.yaml" command="load" />
+  <rosparam file="$(find robofish_depth)/param/$(optenv ROBOT default).yaml" command="load" />
+  
+  <node pkg="robofish_depth" type="DepthSensorNodePY.py" name="depth_sensor"/>
+</launch>
